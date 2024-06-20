@@ -26,7 +26,6 @@ fun LogInScreen(navController: NavController, viewModel: LogInViewModel){
 
         Button(
             onClick = {
-                viewModel.signOut()
                 navigateToNoBack(navController, DestinationScreen.Register.route)
             },
             modifier = Modifier.padding(16.dp)

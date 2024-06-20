@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.puppylife.data.DataSign
+import com.example.puppylife.data.Data
 import com.example.puppylife.viewmodel.LogInViewModel
 
 sealed class DestinationScreen(var route: String){
@@ -24,12 +24,14 @@ sealed class DestinationScreen(var route: String){
 @Composable
 fun Navigation(padding: PaddingValues) {
     val navController = rememberNavController()
-    var viewModel = hiltViewModel<LogInViewModel>()
+    val viewModel = hiltViewModel<LogInViewModel>()
 
     NavHost(
         navController = navController,
         startDestination = DestinationScreen.Register.route,
-        modifier = Modifier.padding(padding).background(Color(0xFF000CEC)),
+        modifier = Modifier
+            .padding(padding)
+            .background(Color(0xFF000CEC)),
     ) {
         composable(DestinationScreen.Register.route){
             RegisterScreen(navController = navController,viewModel = viewModel)
@@ -38,14 +40,14 @@ fun Navigation(padding: PaddingValues) {
             LogInScreen(navController = navController, viewModel = viewModel)
         }
         composable(DestinationScreen.Logged.route){
-            LoggedScreen(mainNavController = navController, logViewModel = viewModel)
+            LoggedScreen(mainNavController = navController)
         }
     }
 }
 
 @Composable
 fun CheckSingedIn(navController: NavController){
-    if(DataSign.signIn.value){
+    if(Data.signIn.value){
         // ToDo: Cambiar ruta
         navigateToNoBack(navController, DestinationScreen.Logged.route)
     }

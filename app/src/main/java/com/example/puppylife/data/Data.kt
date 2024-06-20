@@ -2,9 +2,11 @@ package com.example.puppylife.data
 
 import androidx.compose.runtime.mutableStateOf
 
-object DataSign {
+object Data {
     val signIn = mutableStateOf(false)
+    val inProcess = mutableStateOf(false)
     val user = mutableStateOf<User?>(null)
-    val email = mutableStateOf("")
-    val password = mutableStateOf("")
+    val userID = mutableStateOf<String?>(null)
+    val userName = mutableStateOf<String?>(null)
+    val photoUrl = mutableStateOf<String?>(null)
 }

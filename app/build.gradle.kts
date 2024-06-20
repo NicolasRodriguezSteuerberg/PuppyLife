@@ -65,6 +65,8 @@ dependencies {
     implementation(libs.androidx.material3)
     // navigation
     implementation(libs.androidx.navigation.compose)
+    // coil compose
+    implementation(libs.coil.compose)
     // dagger hilt
     implementation(libs.dagger.hilt.android)
     implementation(libs.androidx.lifecycle.runtime.compose.android)

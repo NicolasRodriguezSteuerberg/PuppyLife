@@ -35,6 +35,8 @@ class HiltModule {
             .build()
         return GoogleSignIn.getClient(application, gso)
     }
+
     @Provides
+    @Singleton
     fun provideFirestore(): FirebaseFirestore = Firebase.firestore
 }

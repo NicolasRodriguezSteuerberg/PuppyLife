@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.puppylife.R
+import com.example.puppylife.data.Data
 import com.example.puppylife.viewmodel.LogInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -31,7 +32,7 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
         contract = ActivityResultContracts.StartActivityForResult()
     ) { result ->
 
-        Log.d("Register", "${viewModel.inProcess.value}")
+        Log.d("Register", "${Data.inProcess.value}")
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
             val account = task.getResult(ApiException::class.java)!!
@@ -39,22 +40,22 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
                 account,
                 onSuccess = { authResult ->
                     navigateToNoBack(navController, DestinationScreen.Logged.route)
-                    viewModel.inProcess.value = false
-                    Log.d("Register", " Navegacion ${viewModel.inProcess.value}")
+                    Data.inProcess.value = false
+                    Log.d("Register", " Navegacion ${Data.inProcess.value}")
                     Log.d("Register", "Firebase Auth with Google successful: ${authResult.user?.email}")
                 },
                 onFailure = { exception ->
-                    viewModel.inProcess.value = false
-                    Log.d("Register", "${viewModel.inProcess.value}")
+                    Data.inProcess.value = false
+                    Log.d("Register", "${Data.inProcess.value}")
                     Log.e("Register", "Firebase Auth with Google failed", exception)
                 }
             )
         } catch (e: ApiException) {
-            viewModel.inProcess.value = false
-            Log.d("Register", "${viewModel.inProcess.value}")
+            Data.inProcess.value = false
+            Log.d("Register", "${Data.inProcess.value}")
             Log.e("Register", "Google sign-in failed", e)
         }
-        Log.d("Register", "${viewModel.inProcess.value}")
+        Log.d("Register", "${Data.inProcess.value}")
     }
 
     CheckSingedIn(navController = navController)
@@ -73,10 +74,10 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
         */
         Column (
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Button(
                 onClick = {
-                    viewModel.inProcess.value = true
+                    Data.inProcess.value = true
                     val signInIntent = viewModel.getGoogleSignInClient().signInIntent
                     googleSignInLauncher.launch(signInIntent)
                 },
@@ -89,19 +90,9 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
                     contentDescription = "Google Logo"
                 )
             }
-
-            Button(onClick = {
-                viewModel.signOut()
-            }) {
-                Text(
-                    text = "Sign Out",
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
         }
-
     }
-    if(viewModel.inProcess.value){
+    if(Data.inProcess.value){
         CommonProgressBar()
     }
 }

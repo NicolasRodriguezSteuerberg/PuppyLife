@@ -24,4 +24,14 @@ object Firebase{
             }
     }
 
+    fun getUserFirebase(firestore: FirebaseFirestore, uid: String){
+        firestore.collection("users").document(uid).get()
+            .addOnSuccessListener {
+                Data.user.value = it.toObject(User::class.java)
+            }
+            .addOnFailureListener{
+                Data.user.value = null
+            }
+    }
+
 }

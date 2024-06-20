@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.puppylife.data.Data
 import com.example.puppylife.model.Firebase.createUser
+import com.example.puppylife.model.Firebase.getUserFirebase
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.AuthCredential
@@ -31,11 +32,9 @@ class LogInViewModel @Inject constructor(
         val currentUser = auth.currentUser
         // Si currentUser es diferente de null, significa que el usuario ya está logueado
         Data.signIn.value = currentUser != null
-        /*
         currentUser?.uid?.let {
             getUserData(it)
         }
-         */
     }
 
     fun getGoogleSignInClient() = googleSignInClient
@@ -59,6 +58,6 @@ class LogInViewModel @Inject constructor(
     }
 
     private fun getUserData(uid: String) {
-        //ToDo: Obtener los datos del usuario
+        getUserFirebase(firestore = firestore,uid =uid)
     }
 }

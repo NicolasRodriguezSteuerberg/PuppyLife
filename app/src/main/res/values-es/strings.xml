@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PuppyLife</string>
+    <string name="home">Inicio</string>
+    <string name="profile">Perfil</string>
+    <string name="forum">Foros</string>
+    <string name="dogwalk">Paseos caninos</string>
+</resources>

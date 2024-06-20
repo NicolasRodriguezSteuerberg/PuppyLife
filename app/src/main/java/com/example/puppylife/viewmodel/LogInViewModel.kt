@@ -53,10 +53,12 @@ class LogInViewModel @Inject constructor(
     }
 
     fun signOut() {
+        inProcess.value = true
         DataSign.signIn.value = false
         Log.d("LogInViewModel", "${auth.currentUser} and ${googleSignInClient}")
         auth.signOut()
         googleSignInClient.signOut()
+        inProcess.value = false
         Log.d("LogInViewModel", "signOut: signed out ${auth.currentUser} and ${googleSignInClient}")
     }
 

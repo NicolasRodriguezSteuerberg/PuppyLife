@@ -8,11 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeScreen() {
-    Box(
-        modifier = Modifier.padding(8.dp)
-
-    ) {
-        Text(text = "Home Screen")
+fun ForumScreen() {
+    Box(modifier = Modifier.padding(8.dp)){
+        Text(text = "Forum Screen")
     }
 }

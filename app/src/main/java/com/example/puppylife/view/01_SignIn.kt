@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -15,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -36,7 +38,7 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
             viewModel.signUpGoogle(
                 account,
                 onSuccess = { authResult ->
-                    navigateToNoBack(navController, DestinationScreen.Login.route)
+                    navigateToNoBack(navController, DestinationScreen.Logged.route)
                     viewModel.inProcess.value = false
                     Log.d("Register", " Navegacion ${viewModel.inProcess.value}")
                     Log.d("Register", "Firebase Auth with Google successful: ${authResult.user?.email}")
@@ -60,7 +62,7 @@ fun RegisterScreen(viewModel: LogInViewModel, navController: NavController, ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .background(Color(0xFFE0E0E0)),
         contentAlignment = Alignment.Center
     ){
         /*

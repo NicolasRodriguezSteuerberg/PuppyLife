@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">PuppyLife</string>
-    <string name="web_client_id">894201653233-5emu18nsgtrvs3ksccvsa230ms1najl9.apps.googleusercontent.com</string>
+    <string name="app_name" translatable="false">PuppyLife</string>
+    <string name="web_client_id" translatable="false">894201653233-5emu18nsgtrvs3ksccvsa230ms1najl9.apps.googleusercontent.com</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="forum">Forum</string>
+    <string name="dogwalk">Dog walks</string>
 </resources>

@@ -1,0 +1,34 @@
+# Archivos y carpetas de compilación
+/target/
+/out/
+
+# Archivos de dependencias de Maven
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Archivos de IntelliJ IDEA
+.idea/
+/*.iml
+*.ipr
+*.iws
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs y dumps
+logs/
+*.log
+hs_err_pid*
+replay_pid*
+
+# Archivos de configuración y credenciales
+.env
+*.properties
+application.yml
+application.properties
+
